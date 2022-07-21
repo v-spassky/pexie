@@ -1,0 +1,25 @@
+name: pexie
+version: "0.1.0"
+about: Does awesome things
+args:
+  - ignore:
+      short: i
+      long: ignore
+      help: "Set vector of files/dirs relative paths that should not be
+        included into the generated HTML in the following fasion: --ignore /target /src /bin /lib"
+      takes_value: true
+      multiple: true
+  - order:
+      short: o
+      long: order
+      help:
+        "Set the order in which fils and dirs will appear in the generated HTML.
+        The options are 'dirs-first'(default) and 'files-first'"
+      takes_value: true
+  - result:
+      short: r
+      long: result
+      help: "Set the output mode. The options are 'print'(default) and 'save'.
+        The 'print' option tells to print the output to stdout, the 'save'
+        option tells to save the output to pwd/pexieoutput.html"
+      takes_value: true

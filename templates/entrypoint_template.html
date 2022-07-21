@@ -1,0 +1,15 @@
+{% for entry in dir_contents %}
+    {% if entry.is_dir %}
+        <details>
+            <summary>{{ entry.name }}</summary>
+            &nbsp;&nbsp; This is how you dropdown. DIR
+            {{ entry.contents }}
+        </details>
+        {% include "recuresively_included_template.html" %}
+    {% else %}
+        <details>
+            <summary>{{ entry.name }}</summary>
+            &nbsp;&nbsp; This is how you dropdown. FILE
+        </details>
+    {% endif %}
+{% endfor %}
