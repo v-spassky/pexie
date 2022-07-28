@@ -3,7 +3,9 @@
 
 #[macro_use]
 extern crate clap;
+extern crate dirs;
 use clap::App;
+use dirs::home_dir;
 use serde::Serialize;
 use std::env;
 use std::fs;
@@ -15,6 +17,8 @@ use tera::{Context, Tera};
 /// Main function.
 fn main() {
     let cwd = env::current_dir().unwrap();
+    let home_dir = home_dir().unwrap();
+    let pexie_templates_pattern = format!("{}/pexie/*.html", home_dir.display());
 
     println!("");
     println!(
@@ -40,7 +44,7 @@ fn main() {
 
     let dir_contents = build_dir_contents(Path::new("./"), &config);
 
-    let tera = match Tera::new("templates/**/*.html") {
+    let tera = match Tera::new(pexie_templates_pattern.as_str()) {
         Ok(tera_instance) => tera_instance,
         Err(error) => {
             println!("Failed to initialize Tera instance: {:?}", error);
